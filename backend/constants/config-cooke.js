@@ -1,5 +1,5 @@
 module.exports = {
 	httpOnly: true,
-	secure: true,
-	sameSite: 'None',
+	// secure: true,
+	// sameSite: 'None',
 }
