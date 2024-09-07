@@ -34,6 +34,10 @@ const ProductsListContainer = ({ className }) => {
 		}
 	}, [searchQuery, subcategoryId, page, dispatch, isSearch])
 
+	if (isLoading && !lastPage) {
+		return <Loader fontSize='150px' />
+	}
+
 	if (error) {
 		return <Error titleError={error} spin />
 	}

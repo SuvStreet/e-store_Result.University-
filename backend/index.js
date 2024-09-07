@@ -1,5 +1,6 @@
 require('dotenv').config()
 
+const path = require('path')
 const express = require('express')
 const chalk = require('chalk')
 const mongoose = require('mongoose')
@@ -7,7 +8,7 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const routes = require('./routes')
 
-const port = 3000
+const port = 3005
 const app = express()
 
 app.use(express.static(path.resolve('..', 'frontend', 'dist')))
@@ -17,7 +18,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors(
 	{
-		origin: 'http://localhost:3010',
+		origin: 'http://localhost:3001',
 		credentials: true,
 	},
 ))

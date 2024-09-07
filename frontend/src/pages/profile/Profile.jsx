@@ -150,7 +150,7 @@ const ProfileContainer = ({ className }) => {
 						<Error titleError={'Заказы отсутствуют!'} noAccess />
 					</div>
 				)}
-				<Error titleError={errorOrder} />
+				{errorOrder && <Error titleError={errorOrder} />}
 			</div>
 		</div>
 	)

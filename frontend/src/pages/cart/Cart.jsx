@@ -17,6 +17,7 @@ const CartContainer = ({ className }) => {
 	const userId = useSelector(selectUser).id
 	const navigate = useNavigate()
 	const [isLoginCart, setIsLoginCart] = useState(true)
+	const [isLoadingOrder, setIsLoadingOrder] = useState(false)
 
 	useEffect(() => {
 		if (!userId) return
@@ -30,16 +31,20 @@ const CartContainer = ({ className }) => {
 	}
 
 	const handleOrder = () => {
-		!userId
-			? navigate('/authorize')
-			: dispatch(addOrder(cart)).then((responseOk) => {
-					if (responseOk) {
-						dispatch(clearCart())
-					}
-			  })
+		if (!userId) {
+			navigate('/authorize')
+		} else {
+			setIsLoadingOrder(true)
+			dispatch(addOrder(cart)).then((responseOk) => {
+				if (responseOk) {
+					setIsLoadingOrder(false)
+					dispatch(clearCart())
+				}
+			})
+		}
 	}
 
-	if (isLoginCart) return <Loader fontSize='150px' />
+	if (isLoginCart && cart.isLoading) return <Loader fontSize='150px' />
 
 	if (cart.items.length === 0) {
 		return (
@@ -121,9 +126,9 @@ const CartContainer = ({ className }) => {
 							</div>
 						))}
 					</div>
-					<Button solid='green' disabled={order.isLoading} onClick={() => handleOrder()}>
+					<Button solid='green' disabled={isLoadingOrder} onClick={() => handleOrder()}>
 						{userId ? (
-							order.isLoading ? (
+							isLoadingOrder ? (
 								<Loader />
 							) : (
 								'Оформить заказ'

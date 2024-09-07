@@ -4,7 +4,7 @@ import { ACTION_TYPE } from '../actions'
 const initialState = {
 	isLoading: false,
 	error: null,
-	isAuth: false || localStorageService.getAuth(),
+	isAuth: false || Boolean(localStorageService.getAuth()),
 	modal: {
 		isOpen: false,
 		textModal: '',
