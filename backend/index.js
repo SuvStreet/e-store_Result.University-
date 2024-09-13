@@ -18,10 +18,10 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(
 	cors({
-		// origin: 'http://localhost:5173',
-		origin: (origin, callback) => {
-			callback(null, true) // разрешить все CORS-запросы
-		},
+		origin: 'http://localhost:3000',
+		// origin: (origin, callback) => {
+		// 	callback(null, true) // разрешить все CORS-запросы
+		// },
 		credentials: true,
 	}),
 )
