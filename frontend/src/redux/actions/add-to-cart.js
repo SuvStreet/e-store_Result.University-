@@ -6,7 +6,7 @@ export const addToCart =
 	(dispatch, getState) => {
 		const {
 			cart,
-			productsList: { products },
+			singleProduct,
 		} = getState()
 
 		const {
@@ -14,7 +14,7 @@ export const addToCart =
 			price,
 			images: imageUrl,
 			discount,
-		} = products.find((product) => product.id === id)
+		} = singleProduct
 
 		const newItem = {
 			id,

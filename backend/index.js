@@ -16,18 +16,21 @@ app.use(express.static(path.resolve('..', 'frontend', 'dist')))
 app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(cors(
-	{
-		origin: 'http://localhost:3001',
+app.use(
+	cors({
+		// origin: 'http://localhost:5173',
+		origin: (origin, callback) => {
+			callback(null, true) // разрешить все CORS-запросы
+		},
 		credentials: true,
-	},
-))
+	}),
+)
 
 app.use('/api', routes)
 
-app.get("*", (req, res) => {
-	res.sendFile(path.resolve("..", "frontend", "dist", "index.html"))
-});
+app.get('/*', (req, res) => {
+	res.sendFile(path.resolve('..', 'frontend', 'dist', 'index.html'))
+})
 
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING).then(() => {
 	app.listen(port, () => {

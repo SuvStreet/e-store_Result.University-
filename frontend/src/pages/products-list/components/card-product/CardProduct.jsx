@@ -55,7 +55,8 @@ const CardProductContainer = forwardRef(({ className, product, ...props }, ref) 
 					</div>
 				</div>
 			</Link>
-			<div className='button-container'>
+			{/* Было желание реализовать, но не хватило времени */}
+			{/* <div className='button-container'>
 				<div className='button-product'>
 					<Button onClick={() => console.log(product)}>
 						<Icon iconCode={faHeart} fontSize='20px'></Icon>
@@ -66,7 +67,7 @@ const CardProductContainer = forwardRef(({ className, product, ...props }, ref) 
 						<p>В корзину</p>
 					</Button>
 				</div>
-			</div>
+			</div> */}
 		</div>
 	)
 })

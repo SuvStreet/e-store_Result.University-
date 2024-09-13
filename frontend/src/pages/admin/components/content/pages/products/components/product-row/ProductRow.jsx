@@ -7,6 +7,7 @@ import { Button, Icon } from '../../../../../../../../components'
 
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
+import { formatPrice } from '../../../../../../../../utils'
 
 const ProductRowContainer = ({ item, index }) => {
 	const navigate = useNavigate()
@@ -37,7 +38,7 @@ const ProductRowContainer = ({ item, index }) => {
 				<div>{quantity}</div>
 			</div>
 			<div className='cell'>
-				<div>{price}</div>
+				<div>{formatPrice(price)}</div>
 			</div>
 			<div className='cell buttons'>
 				<Button className='edit' onClick={() => handelEditClick()}>

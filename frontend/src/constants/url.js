@@ -1,5 +1,5 @@
 export const URL = {
-	API: '/api',
+	API: 'http://localhost:3005/api',
 	USER: '/user',
 	AUTHORIZE: '/authorize',
 	REGISTER: '/register',
